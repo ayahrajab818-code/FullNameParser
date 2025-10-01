@@ -10,20 +10,25 @@ public class Main {
         System.out.print("Please enter your full name: ");
         String fullName = scanner.nextLine().trim();
 
+        String[] nameparts = fullName.split("\\s+");// "\\s+ means split at one or more spaces, so it ignores extra spaces between words".
+        String first = nameparts[0];
+        String middleName;
+        String lastName;
 
 
-
-        String first = "";
-        String middle = "(none)";
-        String last = "";
-
-        String[] parts = fullName.split("\\s+");// "\\s+ means split at one or more spaces, so it ignores extra spaces between words".
+        if (nameparts.length == 2) {//Check if the name has exactly two words. If yes, then there’s no middle name.
+            middleName = " ";
+            lastName = nameparts[1]; // no middle name
+        } else{
+            middleName = nameparts[1]; // middle name
+            lastName = nameparts[2];   // last name
+        }
 
 
         // Result
         System.out.println("First name: " + first);
-        System.out.println("Middle name: " + middle);
-        System.out.println("Last name: " + last);
+        System.out.println("Middle name: " + middleName);
+        System.out.println("Last name: " + lastName);
 
     }
 }
